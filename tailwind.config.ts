@@ -27,31 +27,10 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: "var(--primary)",
-        purple: "var(--purple)",
-        white: "var(--white)",
-        "white-2": "var(--white-2)",
-        'dark-bg': 'rgba(9, 5, 14, 1)',
-        'white-style': 'rgba(139, 139, 139, 1)',
-        'custom-purple': 'rgba(162, 109, 255, 1)',
+
       },
       backgroundImage: {
-        "check-bg": "url('/check-bg.svg')",
-        "main-bg": "url('/background.svg')",
-        howitworks:
-          "linear-gradient(90deg, #26183E 0%, #A26DFF 47.5%, #26183E 100%)",
-        "join-community":
-          "url('/join-community/grid.svg'), linear-gradient(102.75deg, #09050E 64.15%, #462B74 129.88%)",
-        "community-cta":
-          "linear-gradient(180deg, rgba(162, 109, 255, 0.9) 0%, rgba(162, 109, 255, 0) 90%)",
-        "gradient-purple":
-          "linear-gradient(90deg, rgba(6,6,6,0.01) 0%, rgba(154,128,207,0.01) 49%, rgba(4,1,8,1) 100%)",
-        "gradient-card":
-          "linear-gradient(135deg, rgba(162, 109, 255, 0.25), rgba(72, 61, 139, 0.5))",
-        "grid-pattern": "url('/small-grid.svg')",
-        "grid-pattern-2": "url('/large-grid.svg')",
+        
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
@@ -59,46 +38,7 @@ const config: Config = {
         manrope: ["var(--font-manrope)"],
         "roboto-serif": ["var(--font-roboto-serif)"],
       },
-      boxShadow: {
-        "custom-purple": "0 0 4px 2px rgba(162, 109, 255, 0.25)",
-        "glow": "0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6)",
-      },
-      animation: {
-        slowSpin: "spin 3s linear infinite",
-        spinSlow: 'spin 20s linear infinite',
-        glowSlow: 'glow 4s cubic-bezier(0.6, 0.8, 0.6, 1) infinite',
-      },
-      keyframes: {
-        glow: {
-          '0%, 100%': { 
-            filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3))'
-          },
-          '50%': { 
-            filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7))'
-          },
-        },
-        pulse: {
-          '0%': { 
-            transform: 'scale(0.8)',
-            opacity: '0',
-            boxShadow: '0 0 0 0 rgba(162, 109, 255, 0.7)'
-          },
-          '50%': { 
-            transform: 'scale(1.2)',
-            opacity: '1',
-            boxShadow: '0 0 0 10px rgba(162, 109, 255, 0)'
-          },
-          '100%': { 
-            transform: 'scale(0.8)',
-            opacity: '0',
-            boxShadow: '0 0 0 0 rgba(162, 109, 255, 0)'
-          },
-        },
-      },
-      scale: {
-        150: "1.5", 
-      },
-      transform: ["responsive", "hover", "focus"],
+   
     },
   },
   plugins: [],
