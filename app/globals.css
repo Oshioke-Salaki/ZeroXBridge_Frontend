@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-logo: var(--logo);
+  --color-toggle-bg: var(--toggle-bg);
+  --color-toggle-slider-bg: var(--toggle-slider-bg);
+  --color-toggle-slider-border: var(--toggle-slider-border);
+  --color-theme-icon-fill-active: var(--theme-icon-fill-active);
+  --color-theme-icon-fill-not-active: var(--theme-icon-fill-not-active);
+  --color-linear-primary-gradient: var(--linear-primary-gradient);
+  --color-primary-border: var(--primary-border);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-active: var(--sidebar-text-active);
+  --color-primary-text: var(--primary-text);
+  --color-wallet-border: var(--wallet-border);
+}
+
+:root {
+  --background: #f6f6f6;
+  --foreground: #000000;
+  --logo: #2e2e2e;
+
+  --toggle-bg: #ededed;
+  --toggle-slider-bg: #ffffff;
+  --toggle-slider-border: #efefef;
+  --theme-icon-fill-active: #000000;
+  --theme-icon-fill-not-active: #d3d3d3;
+
+  /* Background Gradients */
+  --linear-primary-gradient: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+
+  /* Borders */
+  --primary-border: #e8e8e8;
+  --wallet-border: #efefef;
+
+  /* Text */
+  --primary-text: #444444;
+  --sidebar-text: #909090;
+  --sidebar-text-active: #303030;
+}
+
+.dark {
+  --background: #111111;
+  --foreground: #ffffff;
+  --logo: #ffffff;
+
+  --toggle-bg: #1c1c1c;
+  --toggle-slider-bg: #2e2e2e;
+  --toggle-slider-border: #363636;
+  --theme-icon-fill-active: #ffffff;
+  --theme-icon-fill-not-active: #515151;
+
+  /* Background Gradients */
+  --linear-primary-gradient: linear-gradient(180deg, #1f1f1f 0%, #1c1c1c 100%);
+
+  /* Borders */
+  --primary-border: #202020;
+  --wallet-border: transparent;
+
+  /* Text */
+  --primary-text: #f4f4f4;
+  --sidebar-text: #a4a4a4;
+  --sidebar-text-active: #ffffff;
+}
+
+button {
+  cursor: pointer;
+}

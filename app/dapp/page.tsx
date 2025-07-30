@@ -1,11 +1,7 @@
-import { div } from 'framer-motion/client';
+import { redirect } from "next/navigation";
 
-const DashboardPage = () => {
-  return (
-    <div>
-      <h2>Hello world</h2>
-    </div>
-  );
+const Page = async () => {
+  redirect("/dapp/dashboard");
 };
 
-export default DashboardPage;
+export default Page;
