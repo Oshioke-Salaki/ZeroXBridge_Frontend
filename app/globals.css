@@ -17,6 +17,7 @@
   --color-sidebar-text: var(--sidebar-text);
   --color-sidebar-text-active: var(--sidebar-text-active);
   --color-primary-text: var(--primary-text);
+  --color-wallet-border: var(--wallet-border);
 }
 
 :root {
@@ -35,6 +36,7 @@
 
   /* Borders */
   --primary-border: #e8e8e8;
+  --wallet-border: #efefef;
 
   /* Text */
   --primary-text: #444444;
@@ -58,6 +60,7 @@
 
   /* Borders */
   --primary-border: #202020;
+  --wallet-border: transparent;
 
   /* Text */
   --primary-text: #f4f4f4;
