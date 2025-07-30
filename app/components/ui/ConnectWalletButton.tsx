@@ -10,7 +10,7 @@ function ConnectWalletButton() {
       }}
     >
       <WalletIcon />
-      <span className="inline-block text-sm">Connect Wallet</span>
+      <span className="inline-block">Connect Wallet</span>
     </button>
   );
 }

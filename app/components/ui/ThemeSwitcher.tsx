@@ -17,7 +17,7 @@ function ThemeSwitcher() {
         }`}
       />
       <span
-        className={`relative z-10 flex flex-1 justify-center items-center h-full rounded-full text-center text-sm transition-colors duration-300 ${
+        className={`relative z-10 flex flex-1 justify-center items-center h-full rounded-full text-center transition-colors duration-300 ${
           !isDarkMode
             ? "text-theme-icon-fill-active"
             : "text-theme-icon-fill-not-active"
@@ -26,7 +26,7 @@ function ThemeSwitcher() {
         <SunIcon />
       </span>
       <span
-        className={`relative z-10 flex-1  rounded-full justify-center h-full items-center flex text-sm transition-colors duration-300 ${
+        className={`relative z-10 flex-1  rounded-full justify-center h-full items-center flex transition-colors duration-300 ${
           isDarkMode
             ? "text-theme-icon-fill-active"
             : "text-theme-icon-fill-not-active"

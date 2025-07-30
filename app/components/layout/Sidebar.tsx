@@ -31,11 +31,11 @@ function Sidebar({
 
   return (
     <div
-      className={`lg:border-r-primary-border bg-background lg:border-r-[1px] w-full lg:w-fit z-50 md:relative absolute top-0 left-0 h-full transition-transform duration-300 md:translate-x-0 ${
+      className={`lg:border-r-primary-border bg-background lg:border-r-[1px] w-full lg:w-fit z-50 md:relative absolute top-0 left-0 font-light h-full transition-transform duration-300 md:translate-x-0 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="p-[24px] lg:p-[42px_30px_45px_40px] flex flex-col gap-y-[6px]">
+      <div className="p-[24px] lg:p-[42px_30px_45px_40px] flex flex-col gap-y-[6px] items-stretch">
         {routes.map(({ label, href, icon: Icon }) => {
           const isActive = pathname === href;
           return (
@@ -43,9 +43,9 @@ function Sidebar({
               key={label}
               href={href}
               onClick={onClose}
-              className={`flex justify-between items-center py-[10px] pl-3 pr-[6px] rounded-[8px] ${
+              className={`flex justify-between items-center py-[10px] pl-3 pr-[6px] rounded-[8px] gap-x-[18px]  ${
                 isActive ? "text-sidebar-text-active" : "text-sidebar-text"
-              } w-full lg:w-[190px]`}
+              }`}
               style={
                 isActive
                   ? {
@@ -61,7 +61,7 @@ function Sidebar({
               </div>
               <span
                 className={`w-[2px] h-[18px] rounded-full ${
-                  isActive ? "" : "hidden"
+                  isActive ? "" : "invisible"
                 } bg-[#FFB0E8] backdrop-blur-[0.3px]`}
                 style={{
                   boxShadow: isActive ? "0px 0px 11px 4px #F1BAE140" : "none",
