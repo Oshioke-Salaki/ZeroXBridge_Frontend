@@ -1,26 +1,3 @@
-// import Topbar from "./Topbar";
-// import Sidebar from "./Sidebar";
-
-// function AppLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <div className="h-[100vh] overflow-y-hidden flex flex-col bg-background">
-//       <Topbar />
-//       <div className="flex flex-1">
-//         <Sidebar />
-//         <div className="flex-1 overflow-y-auto h-full p-[22px] text-primary-text">
-//           {children}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default AppLayout;
-
 "use client";
 
 import React, { useState } from "react";
