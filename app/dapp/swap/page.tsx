@@ -22,7 +22,7 @@ export default function SwapPage() {
     : "";
 
   // Dummy connection status
-  const isConnected = true;
+  const [isConnected, setIsConnected] = useState(false);
 
   function handleToggle() {
     const temp = fromToken;
@@ -109,7 +109,7 @@ export default function SwapPage() {
             {isConnected ? (
               <button
                 disabled={fromAmount.length === 0}
-                className="py-3 text-center w-full text-[#F4F4F4] dark:text-[#111111] rounded-full disabled:opacity-65"
+                className="py-3 text-center w-full leading-[120%] font-light text-[#F4F4F4] dark:text-[#111111] rounded-full disabled:opacity-65 shadow-sm-shadow"
                 style={{
                   backgroundImage: "var(--linear-reverse-primary-gradient)",
                 }}
@@ -117,7 +117,10 @@ export default function SwapPage() {
                 Swap
               </button>
             ) : (
-              <ConnectWalletButton className="w-full" />
+              <ConnectWalletButton
+                className="w-full"
+                onConnect={() => setIsConnected(true)}
+              />
             )}
           </div>
         </div>
