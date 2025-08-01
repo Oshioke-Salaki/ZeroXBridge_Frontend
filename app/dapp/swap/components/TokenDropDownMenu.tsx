@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu";
+import Image from "next/image";
 
 interface Token {
   logo: string;
@@ -43,7 +44,13 @@ export function TokenSelectDropdown({
             className={`flex items-center gap-2 cursor-pointer`}
           >
             <div className="lg:w-11 w-9 h-9 p-1 lg:h-11 flex justify-center items-center bg-[#F6F6F6] dark:bg-[#272727] rounded-full">
-              <img src={token.logo} alt="" />
+              <Image
+                width={18}
+                height={18}
+                className="w-auto h-auto"
+                src={token.logo}
+                alt="token logo"
+              />
             </div>
             <div>
               <div className="font-medium text-sm">{token.name}</div>

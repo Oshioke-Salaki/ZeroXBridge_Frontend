@@ -4,6 +4,7 @@ import { TokenSelectDropdown } from "./TokenDropDownMenu";
 // Dummy token type data
 import { Token } from "@/types/tokens";
 import { tokens_swap as tokens } from "@/utils/data";
+import Image from "next/image";
 
 interface SwapFromInputProps {
   token: Token;
@@ -34,7 +35,13 @@ function SwapFromInput({
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-x-3">
           <div className="w-11 h-11 flex justify-center items-center bg-[#F6F6F6] dark:bg-[#272727] rounded-full">
-            <img src={token.logo} alt="" />
+            <Image
+              width={18}
+              height={18}
+              className="w-auto h-auto"
+              src={token.logo}
+              alt="token logo"
+            />
           </div>
 
           <div className="flex flex-col space-y-0.5">

@@ -13,8 +13,8 @@ import { tokens_swap as tokens } from "@/utils/data";
 export default function SwapPage() {
   const [fromToken, setFromToken] = useState(tokens[0]);
   const [toToken, setToToken] = useState(tokens[1]);
-  let [fromAmount, setFromAmount] = useState<string>("");
-  let toAmount: string = fromAmount
+  const [fromAmount, setFromAmount] = useState<string>("");
+  const toAmount: string = fromAmount
     ? (
         (fromToken.currentPrice * Number(fromAmount)) /
         toToken.currentPrice
@@ -27,7 +27,7 @@ export default function SwapPage() {
 
   function handleToggle() {
     const temp = fromToken;
-    let currentAmountInput = toAmount;
+    const currentAmountInput = toAmount;
     console.log(currentAmountInput);
     setFromToken(toToken);
     setToToken(temp);
