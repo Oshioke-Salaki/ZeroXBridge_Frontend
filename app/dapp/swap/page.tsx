@@ -21,8 +21,7 @@ export default function SwapPage() {
       ).toFixed(2)
     : "";
 
-  console.log(toAmount);
-
+  // Dummy connection status
   const isConnected = true;
 
   function handleToggle() {
