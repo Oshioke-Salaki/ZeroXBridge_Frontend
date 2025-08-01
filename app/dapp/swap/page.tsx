@@ -9,8 +9,11 @@ import SwapToggle from "./components/SwapToggle";
 
 // Dummy tokens data
 import { tokens_swap as tokens } from "@/utils/data";
+import { useConnection } from "@/app/context/ConnectionContext";
+import { SwapSuccessModal } from "./components/SwapSuccessModal";
 
 export default function SwapPage() {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [fromToken, setFromToken] = useState(tokens[0]);
   const [toToken, setToToken] = useState(tokens[1]);
   const [fromAmount, setFromAmount] = useState<string>("");
@@ -22,7 +25,7 @@ export default function SwapPage() {
     : "";
 
   // Dummy connection status
-  const [isConnected, setIsConnected] = useState(false);
+  const { isConnected } = useConnection();
 
   function handleToggle() {
     const temp = fromToken;
@@ -109,6 +112,7 @@ export default function SwapPage() {
             {isConnected ? (
               <button
                 disabled={fromAmount.length === 0}
+                onClick={() => setIsSuccessModalOpen(true)}
                 className="py-3 text-center w-full leading-[120%] font-light text-[#F4F4F4] dark:text-[#111111] rounded-full disabled:opacity-65 shadow-sm-shadow"
                 style={{
                   backgroundImage: "var(--linear-reverse-primary-gradient)",
@@ -117,14 +121,26 @@ export default function SwapPage() {
                 Swap
               </button>
             ) : (
-              <ConnectWalletButton
-                className="w-full"
-                onConnect={() => setIsConnected(true)}
-              />
+              <ConnectWalletButton className="w-full" />
             )}
           </div>
         </div>
       </div>
+
+      <SwapSuccessModal
+        isOpen={isSuccessModalOpen}
+        onClose={() => setIsSuccessModalOpen(false)}
+        transaction={{
+          fromToken: {
+            symbol: fromToken.symbol,
+            amount: fromAmount,
+          },
+          toToken: {
+            symbol: toToken.symbol,
+            amount: toAmount,
+          },
+        }}
+      />
     </div>
   );
 }
