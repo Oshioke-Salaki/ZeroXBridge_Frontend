@@ -2,29 +2,37 @@
 
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import SwapInput from "./components/SwapInput";
-import SwapIcon from "@/svg/SwapIcon";
 import ConnectWalletButton from "../components/ui/ConnectWalletButton";
+import SwapFromInput from "./components/SwapFromInput";
+import SwapToInput from "./components/SwapToInput";
+import SwapToggle from "./components/SwapToggle";
 
-function SwapToggle() {
-  return (
-    <div className="absolute left-1/2 top-[169.5px] -translate-x-1/2 z-10 border-[#EEEEEE] dark:border-[#151515] border-[3px] w-[35.5px] h-[35.5px] rounded-full flex items-center justify-center bg-[#FFFFFF] dark:bg-[#232323]">
-      <span className="rotate-90 dark:text-[#999999]">
-        <SwapIcon className="w-[18px] h-[18px]" />
-      </span>
-    </div>
-  );
-}
+// Dummy tokens data
+import { tokens_swap as tokens } from "@/utils/data";
 
 export default function SwapPage() {
+  const [fromToken, setFromToken] = useState(tokens[0]);
+  const [toToken, setToToken] = useState(tokens[1]);
+  let [fromAmount, setFromAmount] = useState<string>("");
+  let toAmount: string = fromAmount
+    ? (
+        (fromToken.currentPrice * Number(fromAmount)) /
+        toToken.currentPrice
+      ).toFixed(2)
+    : "";
+
+  console.log(toAmount);
+
   const isConnected = true;
-  const [swapDetails, setSwapDetails] = useState([
-    ["Price", "1 ETH = 1928 STRK"],
-    ["Frontend Fee:", "$1.23"],
-    ["You'd receive:", "$3492.10"],
-  ]);
-  let [fromAmount, setFromAmount] = useState("");
-  let [toAmount, setToAmount] = useState("");
+
+  function handleToggle() {
+    const temp = fromToken;
+    let currentAmountInput = toAmount;
+    console.log(currentAmountInput);
+    setFromToken(toToken);
+    setToToken(temp);
+    setFromAmount(currentAmountInput);
+  }
 
   return (
     <div className="w-full flex justify-center">
@@ -42,26 +50,36 @@ export default function SwapPage() {
           </div>
 
           <div className="relative flex flex-col gap-y-3">
-            <SwapToggle />
-            <SwapInput
-              token={{ logo: "/token-logos/strk-logo.svg", symbol: "STRK" }}
-              amount="12"
+            <SwapToggle onToggle={handleToggle} />
+            <SwapFromInput
+              token={fromToken}
+              setToken={setFromToken}
               balance="10"
-              type="from"
-              fromAmount={fromAmount}
-              setFromAmount={setFromAmount}
+              amount={fromAmount}
+              setAmount={setFromAmount}
+              isConnected={isConnected}
             />
-            <SwapInput
-              token={{ logo: "/token-logos/eth-logo.svg", symbol: "ETH" }}
-              amount="120"
-              type="to"
-              toAmount={toAmount}
+            <SwapToInput
+              token={toToken}
+              setToken={setToToken}
+              amount={toAmount}
+              isConnected={isConnected}
             />
           </div>
 
           <div className="p-5 pt-[25px]">
             <div className="flex flex-col space-y-2 mb-6">
-              {swapDetails
+              {[
+                [
+                  "Price",
+                  `${fromAmount} ${fromToken.symbol} = ${(
+                    (fromToken.currentPrice * Number(fromAmount)) /
+                    toToken.currentPrice
+                  ).toFixed(2)} ${toToken.symbol}`,
+                ],
+                ["Frontend Fee:", "$1.23"],
+                ["You'd receive:", "$3492.10"],
+              ]
                 .filter(([label]) => isConnected || label !== "You'd receive:")
                 .map(([label, value], i) => {
                   const fallbackMap: Record<string, string> = {
@@ -91,7 +109,8 @@ export default function SwapPage() {
 
             {isConnected ? (
               <button
-                className="py-3 text-center w-full text-[#F4F4F4] dark:text-[#111111] rounded-full"
+                disabled={fromAmount.length === 0}
+                className="py-3 text-center w-full text-[#F4F4F4] dark:text-[#111111] rounded-full disabled:opacity-65"
                 style={{
                   backgroundImage: "var(--linear-reverse-primary-gradient)",
                 }}
