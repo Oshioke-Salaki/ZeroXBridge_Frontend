@@ -4,7 +4,7 @@ import { Spinner } from "@/svg/Spinner";
 import WalletIcon from "@/svg/WalletIcon";
 import { GradientDirection, GradientWrapperPrimary } from "./Gradients";
 import { useThemeContext } from "@/app/hooks/context";
-import { useMemo } from "react";
+
 
 interface ConnectWalletButtonProps {
   full?: boolean;

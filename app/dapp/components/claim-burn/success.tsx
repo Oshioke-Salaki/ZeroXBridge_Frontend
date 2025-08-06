@@ -7,7 +7,7 @@ import { Close } from "@/svg/CloseIcon";
 import { GlobeIcon } from "@/svg/GlobeIcon";
 import { GradientWrapperPrimary } from "../ui/Gradients";
 import { useThemeContext } from "@/app/hooks/context";
-import { useMemo } from "react";
+// import { useMemo } from "react";
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
