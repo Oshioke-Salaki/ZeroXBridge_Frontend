@@ -21,3 +21,38 @@ export function getFormattedDate(): string {
 
   return `${day} ${month} ${year} ${hours12}:${minutes}:${seconds}${ampm}`;
 }
+
+export const shortenAddress = (address: string) => {
+  if (!address) return;
+  const shortened = `${address.slice(0, 4)}...${address.slice(-6)}`;
+  return shortened;
+};
+
+export const getInjectedStarknetWallets = () => {
+  if (typeof window === "undefined") return [];
+
+  const wallets = [];
+
+  if ((window as any).starknet_braavos) {
+    wallets.push({
+      provider: (window as any).starknet_braavos,
+    });
+  }
+
+  if ((window as any).starknet_argentX) {
+    wallets.push({
+      provider: (window as any).starknet_argentX,
+    });
+  }
+
+  if ((window as any).starknet && wallets.length === 0) {
+    wallets.push({
+      id: (window as any).starknet.id || "unknown",
+      name: (window as any).starknet.name || "Unknown Wallet",
+      icon: "/wallet-logos/ready.svg",
+      provider: (window as any).starknet,
+    });
+  }
+
+  return wallets;
+};
