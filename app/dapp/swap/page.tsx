@@ -37,7 +37,7 @@ export default function SwapPage() {
   }
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full pt-20 flex justify-center">
       <div
         className="w-full lg:w-[440px] h-fit p-[1.11px] rounded-[18px] overflow-hidden"
         style={{
