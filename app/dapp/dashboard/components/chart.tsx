@@ -22,23 +22,6 @@ const dummyData = [
   { date: "Aug", value: 28000 },
 ];
 
-const bitcoinData = [
-  { date: "Jan 25", value: 45000 },
-  { date: "Jan 26", value: 48000 },
-  { date: "Jan 27", value: 52000 },
-  { date: "Jan 28", value: 55000 },
-  { date: "Jan 29", value: 58000 },
-  { date: "Jan 30", value: 62000 },
-  { date: "Jan 31", value: 59000 },
-  { date: "Feb 1", value: 56000 },
-  { date: "Feb 2", value: 53000 },
-  { date: "Feb 3", value: 48000 },
-  { date: "Feb 4", value: 42000 },
-  { date: "Feb 5", value: 38000 },
-  { date: "Feb 6", value: 35000 },
-  { date: "Feb 7", value: 32000 },
-];
-
 const formatYAxisValue = (value: number) => {
   if (value >= 1000000) {
     return `${(value / 1000000).toFixed(0)}M`;
@@ -46,13 +29,6 @@ const formatYAxisValue = (value: number) => {
     return `${(value / 1000).toFixed(0)}K`;
   }
   return value.toString();
-};
-
-const formatAssetValue = (value: number) => {
-  if (value >= 1000) {
-    return `$${(value / 1000).toFixed(0)}K`;
-  }
-  return `$${value}`;
 };
 
 export const DashboardChart = () => {
@@ -179,7 +155,9 @@ export const AssetChart = ({ assetId }: AssetChartProps) => {
             />
           </svg>
           <p
-            className={`text-sm flex items-center ${isUp ? "text-[#32B289]" : "text-[#EF4444]"}`}
+            className={`text-sm flex items-center ${
+              isUp ? "text-[#32B289]" : "text-[#EF4444]"
+            }`}
           >
             {isUp ? "+" : ""}
             {change}%
@@ -216,7 +194,8 @@ export const AssetChart = ({ assetId }: AssetChartProps) => {
             tickLine={false}
             tick={{ fontSize: 12, fill: isDark ? "#888" : "#666" }}
             tickFormatter={(value) => {
-              if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(0)}M`;
+              if (value >= 1_000_000)
+                return `${(value / 1_000_000).toFixed(0)}M`;
               if (value >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
               return value.toString();
             }}

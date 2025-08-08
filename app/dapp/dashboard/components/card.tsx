@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
 import { useWallet } from "@/app/hooks";
-import { ConnectWalletModal } from "./connect-wallet";
 import { PlusIcon } from "lucide-react";
 import { Geist_Mono } from "next/font/google";
 import { useRouter } from "next/navigation";
@@ -62,7 +61,9 @@ export const ClaimCard = () => {
       </div>
       <button
         onClick={() => router.push("/dapp/claim-burn")}
-        className={`w-[99px] rounded-[8px] bg-[#F4F4F4] dark:bg-[#2E2E2E] text-sm font-light h-[37px] text-[#757575] dark:text-${isConnected ? "[#F4F4F4]" : "[#737373]"}`}
+        className={`w-[99px] rounded-[8px] bg-[#F4F4F4] dark:bg-[#2E2E2E] text-sm font-light h-[37px] text-[#757575] dark:text-${
+          isConnected ? "[#F4F4F4]" : "[#737373]"
+        }`}
       >
         Get Started
       </button>

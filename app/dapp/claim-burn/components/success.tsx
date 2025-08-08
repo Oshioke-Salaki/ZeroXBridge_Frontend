@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { DialogBase } from "../../components/ui/Dailog";
 import { Geist_Mono, Inter } from "next/font/google";
-import { Close } from "@/svg/CloseIcon";
 import { GlobeIcon } from "@/svg/GlobeIcon";
 import { GradientWrapperPrimary } from "../../components/ui/Gradients";
 import { useThemeContext } from "@/app/hooks/context";
@@ -45,7 +44,9 @@ export const SuccessModal = ({
     >
       <div className="flex flex-col gap-2">
         <div
-          className={`w-50 h-50 mx-auto ${isDark ? "bg-[var(--toggle-slider-bg)]" : "bg-[#F6F6F6]"} rounded-full flex items-center justify-center`}
+          className={`w-50 h-50 mx-auto ${
+            isDark ? "bg-[var(--toggle-slider-bg)]" : "bg-[#F6F6F6]"
+          } rounded-full flex items-center justify-center`}
         >
           <Image
             src="/check.svg"
@@ -88,7 +89,11 @@ export const SuccessModal = ({
       <div className="flex flex-col gap-3">
         <GradientWrapperPrimary gradientDirection="to-top">
           <button
-            className={`flex gap-x-2 justify-center ${isDark ? "bg-[var(--btn-bg)] text-primary-text" : "bg-black text-white"} w-full items-center px-3 py-[10px] rounded-[8px] border border-wallet-border transition-all duration-200 hover:opacity-80 active:opacity-60`}
+            className={`flex gap-x-2 justify-center ${
+              isDark
+                ? "bg-[var(--btn-bg)] text-primary-text"
+                : "bg-black text-white"
+            } w-full items-center px-3 py-[10px] rounded-[8px] border border-wallet-border transition-all duration-200 hover:opacity-80 active:opacity-60`}
           >
             <GlobeIcon />
             <span className="inline-block text-sm font-light">
@@ -99,7 +104,9 @@ export const SuccessModal = ({
 
         <button
           onClick={onClose}
-          className={`w-full py-3 px-4 rounded-4xl font-bold text-sm transition-colors ${isDark ? "bg-[#ededed] text-black" : "bg-[#F0F0F0]"} ${inter.className}`}
+          className={`w-full py-3 px-4 rounded-4xl font-bold text-sm transition-colors ${
+            isDark ? "bg-[#ededed] text-black" : "bg-[#F0F0F0]"
+          } ${inter.className}`}
         >
           Return to Dashboard
         </button>

@@ -50,20 +50,21 @@ export const useWallet = () => {
       try {
         await ethWallet.connectEthereumWallet(connectorId);
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const provider = window.ethereum as any;
         const platformName = provider?.isMetaMask
           ? "MetaMask"
           : provider?.isCoinbaseWallet
-            ? "Coinbase Wallet"
-            : "Ethereum Wallet";
+          ? "Coinbase Wallet"
+          : "Ethereum Wallet";
 
         // we can add support for more later
         const platformLogo =
           platformName === "MetaMask"
             ? "/wallet-logos/metamask.svg"
             : platformName === "Coinbase Wallet"
-              ? "/wallet-logos/coinbase.svg"
-              : "/wallet-logos/default-eth.svg";
+            ? "/wallet-logos/coinbase.svg"
+            : "/wallet-logos/default-eth.svg";
 
         setWalletPlatform({
           network: "ETH",
@@ -76,7 +77,7 @@ export const useWallet = () => {
         throw error;
       }
     },
-    [ethWallet, clearError, resetWallet, store.setError],
+    [ethWallet, clearError, resetWallet, setWalletPlatform, store]
   );
 
   const disconnectEthWallet = useCallback(() => {
@@ -86,7 +87,7 @@ export const useWallet = () => {
     } catch (error) {
       store.setError(String(error));
     }
-  }, [ethWallet, resetWallet, store.setError]);
+  }, [ethWallet, resetWallet, store]);
 
   const connectStrkWallet = useCallback(
     async (connectorId: StarknetConnectorId) => {
@@ -109,7 +110,7 @@ export const useWallet = () => {
         throw error;
       }
     },
-    [strkWallet, clearError, resetWallet, store.setError],
+    [strkWallet, clearError, resetWallet, setWalletPlatform, store]
   );
 
   const disconnectStrkWallet = useCallback(() => {
@@ -119,9 +120,9 @@ export const useWallet = () => {
     } catch (error) {
       store.setError(String(error));
     }
-  }, [strkWallet, resetWallet, store.setError]);
+  }, [strkWallet, resetWallet, store]);
 
-  const isConnected = store.strkConnected || store.ethConnected
+  const isConnected = store.strkConnected || store.ethConnected;
 
   return {
     ethAddress: store.ethAddress,

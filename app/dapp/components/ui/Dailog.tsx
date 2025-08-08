@@ -2,7 +2,6 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { ReactNode, useMemo } from "react";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useThemeContext } from "@/app/hooks/context";
 import { Close } from "@/svg/CloseIcon";
 
@@ -39,7 +38,9 @@ export const DialogBase = ({
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
         <Dialog.Overlay
-          className={`fixed inset-0 z-50 ${isDark ? "bg-black/30" : "bg-[#F0F0F0]/30"} backdrop-blur-[8px]`}
+          className={`fixed inset-0 z-50 ${
+            isDark ? "bg-black/30" : "bg-[#F0F0F0]/30"
+          } backdrop-blur-[8px]`}
         />
         <Dialog.Content
           className={`fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 focus:outline-none rounded-2xl bg-background border border-primary-border ${SIZE_MAP[size]} ${className}`}
