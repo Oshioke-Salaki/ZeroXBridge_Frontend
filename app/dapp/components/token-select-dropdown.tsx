@@ -16,7 +16,10 @@ interface TokenSelectDropdownProps {
   selectedToken: Token | null;
   onTokenSelect: (token: Token) => void;
   tokens: Token[];
+  loadingToken?: boolean;
 }
+
+
 
 export function TokenSelectDropdown({
   selectedToken,
@@ -93,38 +96,40 @@ export function TokenSelectDropdown({
       <DropdownMenuContent
         className={`w-64 dark:bg-gray-800 dark:border-gray-700 bg-white border-gray-200`}
       >
-        {tokens.map((token) => (
-          <DropdownMenuItem
-            key={token.symbol}
-            onClick={() => onTokenSelect(token)}
-            className={`flex items-center gap-3 p-3 dark:text-white hover:bg-gray-50 text-gray-900`}
-          >
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center dark:bg-gray-600 bg-gray-800`}
+        {
+        tokens.map((token) => (
+            <DropdownMenuItem
+              key={token.symbol}
+              onClick={() => onTokenSelect(token)}
+              className={`flex items-center gap-3 p-3 dark:text-white hover:bg-gray-50 text-gray-900`}
             >
-              <span className="text-white text-sm font-bold">
-                {token.symbol.slice(0, 2)}
-              </span>
-            </div>
-            <div>
-              <div className="font-medium">{token.symbol}</div>
-              <div className={`text-sm dark:text-gray-400 text-gray-500`}>
-                {token.name}
-              </div>
-            </div>
-            <div className="ml-auto">
-              <span
-                className={
-                  token.riskLevel === "High Risk"
-                    ? "text-[#B23232] dark:bg-[#FF60600F] bg-[#FF60600F] p-1 rounded-sm text-sm"
-                    : "text-[#32B289] dark:bg-[#C9FFEE0F] bg-[#C9FFEE5C] p-1 rounded-sm text-sm"
-                }
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center dark:bg-gray-600 bg-gray-800`}
               >
-                {token.riskLevel}
-              </span>
-            </div>
-          </DropdownMenuItem>
-        ))}
+                <span className="text-white text-sm font-bold">
+                  {token.symbol.slice(0, 2)}
+                </span>
+              </div>
+              <div>
+                <div className="font-medium">{token.symbol}</div>
+                <div className={`text-sm dark:text-gray-400 text-gray-500`}>
+                  {token.name}
+                </div>
+              </div>
+              <div className="ml-auto">
+                <span
+                  className={
+                    token.riskLevel === "High Risk"
+                      ? "text-[#B23232] dark:bg-[#FF60600F] bg-[#FF60600F] p-1 rounded-sm text-sm"
+                      : "text-[#32B289] dark:bg-[#C9FFEE0F] bg-[#C9FFEE5C] p-1 rounded-sm text-sm"
+                  }
+                >
+                  {token.riskLevel}
+                </span>
+              </div>
+            </DropdownMenuItem>
+          ))
+        }
       </DropdownMenuContent>
     </DropdownMenu>
   );
